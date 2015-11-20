@@ -1,0 +1,2 @@
+module ProductAttachmentFilesHelper
+end

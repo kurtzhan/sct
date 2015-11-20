@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106145130) do
+ActiveRecord::Schema.define(version: 20151120025418) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20151106145130) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "features", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.string   "slug",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "features", ["slug"], name: "index_features_on_slug", unique: true, using: :btree
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
     t.integer  "sluggable_id",   limit: 4,   null: false
@@ -70,13 +79,32 @@ ActiveRecord::Schema.define(version: 20151106145130) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "product_attachment_files", force: :cascade do |t|
+    t.integer  "product_id",         limit: 4, null: false
+    t.integer  "attachment_file_id", limit: 4, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "product_attachment_files", ["product_id", "attachment_file_id"], name: "uniq_product_id_attachment_file_id", unique: true, using: :btree
+
+  create_table "product_features", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "feature_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "product_features", ["product_id", "feature_id"], name: "uniq_product_id_feature_id", unique: true, using: :btree
+
   create_table "products", force: :cascade do |t|
-    t.integer  "category_id", limit: 4
-    t.string   "name",        limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.text     "body",        limit: 4294967295
-    t.string   "slug",        limit: 255
+    t.integer  "category_id",       limit: 4
+    t.string   "name",              limit: 255
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.text     "body",              limit: 4294967295
+    t.string   "slug",              limit: 255
+    t.integer  "ckeditor_asset_id", limit: 4
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree

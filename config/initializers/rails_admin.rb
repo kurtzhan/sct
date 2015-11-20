@@ -67,7 +67,32 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
     end
-  end  
+  end 
+
+  config.model Ckeditor::AttachmentFile do
+    list do
+      field :id
+      field :name
+      field :data
+      field :created_at
+      field :updated_at
+    end
+  end
+
+  config.model Feature do
+    edit do
+      field :name
+    end
+
+    list do
+      field :id
+      field :name
+      field :slug
+      field :products
+      field :created_at
+      field :updated_at
+    end
+  end
 
   config.current_user_method(&:current_admin)
 
