@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :product_features, :only => []
+  resources :features, :only => [:show]
+  resources :product_attachment_files, :only => []
   mount Ckeditor::Engine => '/ckeditor'
-  resources :products
+  resources :products, :only => [:show, :index]
   devise_for :admins
   resources :categories, :only => [:show, :index]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
