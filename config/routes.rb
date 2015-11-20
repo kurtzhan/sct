@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home_page/index'
   resources :product_features, :only => []
   resources :features, :only => [:show]
   resources :product_attachment_files, :only => []
@@ -61,4 +62,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root 'home_page#index'
 end
