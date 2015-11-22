@@ -50,18 +50,79 @@
 
 
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
+    <div class="row">
+      <div class="col-sm-4" style="padding-right:0px;">
+      <div><%= image_tag "logo.png" %></div>
+      <div><input type="text"  style="width:250px; display:inline;" class="form-control" placeholder="Enter Product"/><input class="btn btn-primary btn-sm" type="button" value="search" /></div>
       </div>
+      <div class="col-sm-8" style="padding-left:0px;padding-right:0px;"> 
+        <%= image_tag "header.png", :size => "640x142" %>
+      </div>
+    </div>
 
-    </div> <!-- /container -->
+    <div  class="row" style="margin-top:15px;">
+    <div class="col-sm-4" style="padding-right:0px;">
+<div class="card footer_item">
+  <div class="card-block">
+    <h4 class="card-title"  style="border-bottom: 1px solid #fff;">Navigation</h4>
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+  </div>
+</div>
+    </div>
+        <div class="col-sm-4" >
+<div class="card footer_item">
+  <div class="card-block">
+    <h4 class="card-title" style="border-bottom: 1px solid #fff;">Products</h4>
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+  </div>
+</div>
+    </div>
+        <div class="col-sm-4" style="padding-left:0px;">
+<div class="card footer_item">
+  <div class="card-block">
+    <h4 class="card-header"  style="border-bottom: 1px solid #fff;">Contact </h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <i class="icon-search"></i>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-block">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    </div>
+    </div>
+    </div> 
 
 
   </body>
