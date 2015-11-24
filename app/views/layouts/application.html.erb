@@ -4,6 +4,7 @@
   <title>WaimaoV2</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -24,8 +25,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#products">Products</a></li>
+            <%= content_tag(:li, link_to("Home", root_path), :class => @current_tab == "home" ? "active" : "" ) %>
+            <%= content_tag(:li, link_to("Products", products_path), :class => @current_tab == "products" ? "active" : "" ) %>
             <li><a href="#about">About</a></li>
             <li><a href="#products">News</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -53,18 +54,21 @@
     <div class="row">
       <div class="col-sm-4" style="padding-right:0px;">
       <div><%= image_tag "logo.png" %></div>
-      <div><input type="text"  style="width:250px; display:inline;" class="form-control" placeholder="Enter Product"/><input class="btn btn-primary btn-sm" type="button" value="search" /></div>
+      <div><input type="text"  style="width:230px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product"/><input class="btn btn-primary btn-sm" type="button" value="search" /></div>
       </div>
-      <div class="col-sm-8" style="padding-left:0px;padding-right:0px;"> 
-        <%= image_tag "header.png", :size => "640x142" %>
+      <div class="col-sm-8" style="padding-left:<%= @user_agent == "firefox" ? '7px' : '11px' %>;padding-right:0px;"> 
+        <%= image_tag "header.png", :size => "635x142" %>
       </div>
+    </div>
+    <div class="container">
+      <%= yield %>
     </div>
 
     <div  class="row" style="margin-top:15px;">
     <div class="col-sm-4" style="padding-right:0px;">
 <div class="card footer_item">
   <div class="card-block">
-    <h4 class="card-title"  style="border-bottom: 1px solid #fff;">Navigation</h4>
+    <h4 class="card-title" style="border-bottom: 1px solid #fff;">Navigation</h4>
     <ul class="nav">
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -108,7 +112,11 @@
   <div class="card-block">
     <h4 class="card-header"  style="border-bottom: 1px solid #fff;">Contact </h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <i class="icon-search"></i>
+    <span class="glyphicon glyphicon-search"></span>
+<i class="fa fa-camera-retro fa-lg"></i>
+<i class="fa fa-home fa-lg" style="color:#000"></i>
+<i class="fa fa-phone fa-lg" style="color:#ccc"></i>
+<i class="fa fa-fax fa-lg" style="color:#ccc"></i> 
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>

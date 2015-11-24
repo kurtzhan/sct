@@ -5,7 +5,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 gem 'rails_admin'
 gem 'devise'
@@ -21,6 +21,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'sprockets', '2.11.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
