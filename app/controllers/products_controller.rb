@@ -71,4 +71,9 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:category_id, :name)
     end
+
+  def set_current_tab
+    @current_tab = 'products'
+  end
+
 end
