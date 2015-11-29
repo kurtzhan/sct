@@ -1,5 +1,6 @@
 class HomePageController < FrontendController
   def index
+      @categories = Category.all
   end
 
   private
