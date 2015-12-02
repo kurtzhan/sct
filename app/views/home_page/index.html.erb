@@ -7,7 +7,7 @@
               <div class="row">
                 <% group.each do |category| %>
                 <div class="col-md-3" style="margin-bottom: 10px;">
-                <%= image_tag Ckeditor::Picture.first.url, :size => "200x200" %>
+                <%= image_tag category.pictures.first.url, :size => "200x200" %>
                 <%= link_to category.name, category_path(category) %>
                 </div>
                 <% end %>

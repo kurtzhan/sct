@@ -12,4 +12,7 @@ class Ckeditor::Picture < Ckeditor::Asset
     url(:content)
   end
   
+  def name
+    data_file_name
+  end
 end

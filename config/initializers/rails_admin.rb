@@ -64,6 +64,7 @@ RailsAdmin.config do |config|
       field :id
       field :name
       field :slug
+      field :pictures
       field :created_at
       field :updated_at
     end
@@ -74,6 +75,18 @@ RailsAdmin.config do |config|
       field :id
       field :name
       field :data
+      field :created_at
+      field :updated_at
+    end
+  end
+  
+  config.model Ckeditor::Picture do
+    list do
+      field :id
+      field :name
+      field :data
+      field :width
+      field :height
       field :created_at
       field :updated_at
     end
@@ -96,4 +109,8 @@ RailsAdmin.config do |config|
 
   config.current_user_method(&:current_admin)
 
+end
+
+RailsAdmin::ApplicationController.class_eval do
+  skip_after_filter :set_current_tab
 end

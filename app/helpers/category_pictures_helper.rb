@@ -1,0 +1,2 @@
+module CategoryPicturesHelper
+end

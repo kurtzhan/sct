@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Category Pictures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category_pictures.each do |category_picture| %>
+      <tr>
+        <td><%= category_picture.category_id %></td>
+        <td><%= category_picture.picture_id %></td>
+        <td><%= link_to 'Show', category_picture %></td>
+        <td><%= link_to 'Edit', edit_category_picture_path(category_picture) %></td>
+        <td><%= link_to 'Destroy', category_picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category picture', new_category_picture_path %>
