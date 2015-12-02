@@ -71,4 +71,8 @@ class CategoriesController < FrontendController
     def category_params
       params.require(:category).permit(:name)
     end
+
+  def set_current_tab
+    @current_tab = "products"
+  end 
 end

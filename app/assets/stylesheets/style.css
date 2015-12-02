@@ -82,3 +82,29 @@ background-color:#812215; color:#fff;padding:10px;border-radius:5px;
 .nav > li > a {
 color:#fff;
 }
+
+.panel-category {
+    border-color: #faebcc;
+    padding: 0px;
+    border-radius: 0px;
+    border: 0px;
+    border-right: 1px solid #E7E7E7;
+}
+.panel-category > .panel-heading {
+    background-color: #cd665f;
+    border-color: #faebcc;
+    color: #fff;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.panel-category > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #faebcc;
+    background: #cbcbcb;
+}
+.panel-category > .panel-heading .badge {
+    background-color: #8a6d3b;
+    color: #fcf8e3;
+}
+.panel-category > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #faebcc;
+}

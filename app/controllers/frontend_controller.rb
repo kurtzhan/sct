@@ -3,6 +3,11 @@ class FrontendController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   before_action :set_current_tab
   before_action :detect_user_agent
+
+  def index
+      @categories = Category.all
+  end
+
   protected
   def detect_user_agent
     user_agent = request.env['HTTP_USER_AGENT']

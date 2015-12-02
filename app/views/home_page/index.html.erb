@@ -1,2 +1,19 @@
-<h1>HomePage#index</h1>
-<p>Find me in app/views/home_page/index.html.erb</p>
+ <div class="container">
+   <div class="row" style="padding: 10px;padding-left:15px;">
+       <div class="panel panel-default">
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">Our Products Categories</div>
+           <div class="panel-body" style="background: #eeeeee;">
+              <% @categories.each_slice(4) do |group| %>
+              <div class="row">
+                <% group.each do |category| %>
+                <div class="col-md-3" style="margin-bottom: 10px;">
+                <%= image_tag category.pictures.first.url, :size => "200x200" %>
+                <%= link_to category.name, category_path(category) %>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+           </div>
+        </div>
+    </div>
+  </div>
