@@ -58,6 +58,7 @@ RailsAdmin.config do |config|
   config.model Category do
     edit do
       field :name
+      field :description, :ck_editor
     end
 
     list do
