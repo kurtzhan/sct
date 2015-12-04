@@ -79,6 +79,10 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
     end
+
+    edit do
+      field :data
+    end
   end
   
   config.model Ckeditor::Picture do
@@ -90,6 +94,10 @@ RailsAdmin.config do |config|
       field :height
       field :created_at
       field :updated_at
+    end
+
+    edit do
+      field :data
     end
   end
 
