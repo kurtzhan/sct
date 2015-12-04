@@ -1,8 +1,41 @@
-<p id="notice"><%= notice %></p>
+ <div class="container">
+   <div class="row" style="padding: 10px;padding-left:15px;">
+       <div class="panel panel-default">
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;"><%= @category.name %></div>
+           <div class="panel-body" style="background: #eeeeee;">
+           <% banner = @category.category_pictures.where("image_type='banner'").first %>
+           <% if banner %>
+             <%= image_tag banner.picture.url %>
+           <% end %>
+           </div>
+         </div>
+   </div>
+   <div class="row">
+	   <div class="col-md-12">
+	   <%= @category.description %>
+	   </div>
+   </div>
+   <% @category.products.each_slice(2) do |group| %>
+   <div class="row">
+   <% group.each do |product| %>
+      <div class="col-md-6">
+             <h3><%= product.name %></h3>
+		<div class="row">
+               <div class="col-md-9">
+                 <div class="thumbnail" style="border:0px">
+			<% pic = product.pictures.first %>
+			<% if pic %>
+		      <%= image_tag pic.url, :style=> "border-left: 3px solid #812215" %>
+		      <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<%= link_to 'Back', categories_path %>
+               </div>
+               </div>
+               <div class="col-md-3">
+                fds fds fds fds fds fdsa fdsa fdsaf dsafd safdsa fdsa 
+               </div>
+		</div>
+      </div>
+    <% end %>
+   </div>
+   <% end %>
+ </div>

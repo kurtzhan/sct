@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_pictures
   resources :category_pictures, :only => []
   get 'home_page/index'
   resources :product_features, :only => []

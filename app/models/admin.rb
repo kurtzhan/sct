@@ -2,7 +2,7 @@ class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   ROLES = %i[superadmin sales banned]
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   def roles=(roles)
     roles = [*roles].map { |r| r.to_sym }
