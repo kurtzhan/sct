@@ -42,7 +42,7 @@ RailsAdmin.config do |config|
     edit do
       field :category, :belongs_to_association
       field :name
-      field :body, :ck_editor
+      field :description, :ck_editor
     end
     
     list do
@@ -70,6 +70,10 @@ RailsAdmin.config do |config|
       field :updated_at
     end
   end 
+
+  config.model Ckeditor::Asset do
+    visible false
+  end
 
   config.model Ckeditor::AttachmentFile do
     list do
@@ -102,6 +106,7 @@ RailsAdmin.config do |config|
   end
 
   config.model Feature do
+    parent Product
     edit do
       field :name
     end
@@ -114,6 +119,24 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
     end
+    weight -1
+  end
+
+  config.model CategoryPicture do
+    parent Category
+  end
+
+  config.model ProductPicture do
+    parent Product
+  end
+
+  config.model ProductAttachmentFile do
+    parent Product
+  end
+
+  config.model ProductFeature do
+    parent Product
+    weight -1
   end
 
   config.current_user_method(&:current_admin)
