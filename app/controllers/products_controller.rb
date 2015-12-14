@@ -4,7 +4,7 @@ class ProductsController < FrontendController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @features = Feature.all
   end
 
   # GET /products/1

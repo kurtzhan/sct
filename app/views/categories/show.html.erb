@@ -15,29 +15,29 @@
 	   <%= @category.description %>
 	   </div>
    </div>
-   <% @category.products.each_slice(2) do |group| %>
+   <% @category.products.each_slice(3) do |group| %>
    <div class="row">
    <% group.each do |product| %>
-      <div class="col-md-6">
+      <div class="col-md-4">
              <h3><%= product.name %></h3>
 		<div class="row">
-               <div class="col-md-8" style="padding-right:0px;">
-                 <div class="thumbnail" style="border:0px">
+               <div class="col-md-6" style="padding-right:0px;">
+                 <div class="thumbnail" style="border:0px;">
 			<% pic = product.pictures.first %>
 			<% if pic %>
-		      <%= image_tag pic.url, :style=> "border-left: 3px solid #812215" %>
+		      <%= image_tag pic.url, :style=> "border-left: 3px solid #812215;margin-left:0px;", :size => "150x150" %>
 		      <% end %>
 
                </div>
                </div>
-               <div class="col-md-4" style="padding:0px;font-size:6px;padding-left:5px;">
+               <div class="col-md-6" style="padding:0px;font-size:6px;padding-left:5px;">
 
-                <div><i class="fa fa-info fa-lg"></i>&nbsp;Material Descriptions</div>
+                <div><i class="fa fa-circle icon-resize-small" style="color:#812215"></i>&nbsp;Material</div>
                 <div>
                 <% if product.description %>
                    <%= product.description.html_safe %>
                 <% end %>
-                <div style="margin-top:5px;"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp;Available Structures</div>
+                <div style="margin-top:5px;"><i class="fa fa-circle icon-resize-small" style="color:#812215"></i>&nbsp;Structures</div>
                 <ul class="list-group">
                       <% product.attachment_files.each do |f| %>
                       <% f.name =~ /^(.*)\.(.*)$/ %>
