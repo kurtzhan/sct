@@ -32,24 +32,25 @@
                </div>
                <div class="col-md-6" style="padding:0px;font-size:6px;padding-left:5px;">
 
-                <div><i class="fa fa-circle icon-resize-small" style="color:#812215"></i>&nbsp;Material</div>
+                <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;Material</div>
                 <div>
                 <% if product.description %>
                    <%= product.description.html_safe %>
                 <% end %>
-                <div style="margin-top:5px;"><i class="fa fa-circle icon-resize-small" style="color:#812215"></i>&nbsp;Structures</div>
+                </div>
+                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;Sizes & Details</div>
                 <ul class="list-group">
                       <% product.attachment_files.each do |f| %>
                       <% f.name =~ /^(.*)\.(.*)$/ %>
-                      <% filename = $1 %>
+                      <% filename = f["filename"] || $1 %>
                       <% ext = $2 %>
 			  <li class="list-group-item" style="border:0px;padding:2px;">
 			    <span class="badge"><%= ext %></span>
-			    <%= link_to filename, f.url %>
+			    <%= link_to filename, f.url, :target => "_blank" %>
 			  </li>
 			  <% end %>
 			</ul>
-                </div>
+                
                </div>
 		</div>
       </div>

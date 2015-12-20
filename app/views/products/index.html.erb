@@ -8,13 +8,13 @@
                 <div class="row">
                      <% group.each do |product| %>
                       <div class="col-md-2">
-                      <h3 style="font-size:12px;"><%= product.name %></h3>
                         <div class="thumbnail" style="border:0px;">
                         <% pic = product.pictures.first %>
                             <% if pic %>
                             <%= image_tag pic.url, :style=> "margin-left:0px;", :size => "150x150" %>
                             <% end %>
                         </div>
+                        <h3 style="font-size:12px;"><%= product.name %></h3>
                       </div>
                       <% end %>
                   </div>

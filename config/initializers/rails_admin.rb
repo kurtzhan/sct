@@ -80,12 +80,14 @@ RailsAdmin.config do |config|
       field :id
       field :name
       field :data
+      field :filename
       field :created_at
       field :updated_at
     end
 
     edit do
       field :data
+      field :filename
     end
   end
   
