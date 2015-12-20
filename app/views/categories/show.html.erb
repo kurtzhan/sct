@@ -5,14 +5,14 @@
            <div class="panel-body" style="background: #eeeeee;">
            <% banner = @category.category_pictures.where("image_type='banner'").first %>
            <% if banner %>
-             <%= image_tag banner.picture.url %>
+             <%= image_tag banner.picture.url, :style => "width: 923px" %>
            <% end %>
            </div>
          </div>
    </div>
    <div class="row">
 	   <div class="col-md-12">
-	   <%= @category.description %>
+	   <%= @category.description.html_safe if @category.description %>
 	   </div>
    </div>
    <% @category.products.each_slice(3) do |group| %>
