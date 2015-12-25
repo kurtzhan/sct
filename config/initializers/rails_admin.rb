@@ -42,7 +42,23 @@ RailsAdmin.config do |config|
     edit do
       field :category, :belongs_to_association
       field :name
+      field :short_description
       field :description, :ck_editor
+      field :title do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_keywords do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_description do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
     end
     
     list do
