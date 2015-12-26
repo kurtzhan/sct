@@ -19,12 +19,18 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['SiteConfig']
+    end
     export
-    bulk_delete
+    bulk_delete do
+      except ['SiteConfig']
+    end
     show
     edit
-    delete
+    delete do
+      except ['SiteConfig']
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
@@ -42,7 +48,23 @@ RailsAdmin.config do |config|
     edit do
       field :category, :belongs_to_association
       field :name
+      field :short_description
       field :description, :ck_editor
+      field :title do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_keywords do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_description do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
     end
     
     list do
@@ -52,6 +74,24 @@ RailsAdmin.config do |config|
       field :slug
       field :created_at
       field :updated_at
+    end
+  end
+
+  config.model SiteConfig do
+    field :title do
+      html_attributes do
+        {:style => "width: 100%"}
+      end
+    end
+    field :meta_keywords do
+      html_attributes do
+        {:style => "width: 100%"}
+      end
+    end
+    field :meta_description do
+      html_attributes do
+        {:style => "width: 100%"}
+      end
     end
   end
 

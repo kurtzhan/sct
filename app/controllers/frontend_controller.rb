@@ -3,6 +3,7 @@ class FrontendController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   before_action :set_current_tab
   before_action :detect_user_agent
+  before_action :set_meta_content
 
   def index
       @categories = Category.all
@@ -18,5 +19,12 @@ class FrontendController < ApplicationController
     else
       @user_agent = "other"
     end
+  end
+  
+  def set_meta_content
+    site_config = SiteConfig.first
+    @title = site_config.title
+    @meta_keywords = site_config.meta_keywords
+    @meta_description = site_config.meta_description
   end
 end

@@ -1,13 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<%= link_to 'Back', products_path %>
+<div class="container">
+  <div class="row" style="padding: 10px;padding-left:15px;">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">
+        <%= @product.name %>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <% @product.pictures.each do |p| %>
+              <div><%= image_tag p.url, :style => "width:260px" %></div>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div>
+                <%= @product.description.html_safe if @product.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

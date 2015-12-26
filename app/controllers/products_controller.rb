@@ -10,6 +10,9 @@ class ProductsController < FrontendController
   # GET /products/1
   # GET /products/1.json
   def show
+    @title = @product.title
+    @meta_keywords = @product.meta_keywords
+    @meta_description = @product.meta_description
   end
 
   # GET /products/new
