@@ -22,8 +22,9 @@ class FrontendController < ApplicationController
   end
   
   def set_meta_content
-    @title = "Sino Bronze"
-    @meta_keywords = "Sino Bronze"
-    @meta_description = "Sino Bronze"
+    site_config = SiteConfig.first
+    @title = site_config.title
+    @meta_keywords = site_config.meta_keywords
+    @meta_description = site_config.meta_description
   end
 end

@@ -6,4 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Admin.create(:email => 'zlyaksa@yahoo.com', :password => '12345abc', :roles => [:superadmin])
+if Admin.count == 0
+  Admin.create(:email => 'zlyaksa@yahoo.com', :password => '12345abc', :roles => [:superadmin])
+end
+
+if SiteConfig.count == 0
+  SiteConfig.create(:title => 'Sino Bronze', :meta_keywords => 'Sino Bronze', :meta_description => 'Sino Bronze')
+end
