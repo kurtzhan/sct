@@ -4,7 +4,7 @@
          <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;"><%= @category.name %></div>
            <div class="panel-body" style="background: #eeeeee;">
            <% banner = @category.category_pictures.where("image_type='banner'").first %>
-           <% if banner %>
+           <% if banner && banner.picture %>
              <%= image_tag banner.picture.url, :style => "width: 923px" %>
            <% end %>
            </div>

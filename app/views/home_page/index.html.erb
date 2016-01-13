@@ -7,7 +7,10 @@
               <div class="row">
                 <% group.each do |category| %>
                 <div class="col-md-3" style="margin-bottom: 10px;">
-                <%= image_tag category.pictures.first.url, :size => "200x200" %>
+                <% headshot = category.category_pictures.where("image_type='headshot'").first %>
+                <% if headshot && headshot.picture %>
+                <%= image_tag headshot.picture.url, :size => "200x200" %>
+                <% end %>
                 <%= link_to category.name, category_path(category) %>
                 </div>
                 <% end %>
