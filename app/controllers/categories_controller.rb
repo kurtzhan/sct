@@ -10,6 +10,9 @@ class CategoriesController < FrontendController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @title = @category.title
+    @meta_keywords = @category.meta_keywords
+    @meta_description = @category.meta_description
   end
 
   # GET /categories/new
