@@ -25,18 +25,18 @@
                  <div class="thumbnail" style="border:0px;">
 			<% pic = product.pictures.first %>
 			<% if pic %>
-		      <%= image_tag pic.url, :style=> "border-left: 3px solid #812215;margin-left:0px;", :size => "150x150" %>
+		      <%= link_to(image_tag(pic.url, :style=> "border-left: 3px solid #812215;margin-left:0px;", :size => "150x150"), product_path(product)) %>
 		      <% end %>
 
                </div>
                </div>
-               <div class="col-md-6" style="padding:0px;font-size:6px;padding-left:5px;">
+               <div class="col-md-6" style="padding:0px;padding-left:5px;">
 
-                <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;Material</div>
-                <div>
+                <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Material", product_path(product) %></div>
+                <div style="padding-left:12px;">
                    <%= product.short_description %>
                 </div>
-                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;Sizes & Details</div>
+                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Sizes & Details", product_path(product) %></div>
                 <ul class="list-group">
                       <% product.attachment_files.each do |f| %>
                       <% f.name =~ /^(.*)\.(.*)$/ %>
