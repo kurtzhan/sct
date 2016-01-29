@@ -1,7 +1,8 @@
 class FrontendController < ApplicationController
+  include SimpleCaptcha::ControllerHelpers
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  before_action :set_current_tab
+#  before_action :set_current_tab
   before_action :detect_user_agent
   before_action :set_meta_content
 

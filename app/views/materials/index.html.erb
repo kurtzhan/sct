@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row" style="padding:10px;padding-left:15px;">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">
+        Materials
+      </div>
+       <div class="panel-body" style="background: #eeeeee;">
+         <% @materials.each do |m| %>
+         <div style="border-left:2px solid #812215;padding-left:10px;margin-top:5px;margin-bottom:5px;">
+           <div><strong><%= m.name %></strong></div>
+           <div style="padding-top:5px;">
+           <% m.material_items.each do |mi| %>
+             <span><%= link_to mi.name, material_material_item_path(m, mi) %></span>
+           <% end %>
+           </div>
+         </div>
+         <% end %>
+       </div>
+    </div>
+  </div>
+</div>

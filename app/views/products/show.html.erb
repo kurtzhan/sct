@@ -5,20 +5,7 @@
         <%= @product.name %>
       </div>
       <div class="panel-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <% @product.pictures.each do |p| %>
-              <div><%= image_tag p.url, :style => "width:260px" %></div>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div>
                 <%= @product.description.html_safe if @product.description %>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

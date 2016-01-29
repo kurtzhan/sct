@@ -20,14 +20,16 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except ['SiteConfig']
+      except ['SiteConfig', 'Message']
     end
     export
     bulk_delete do
       except ['SiteConfig']
     end
     show
-    edit
+    edit do
+      except ['Message']
+    end
     delete do
       except ['SiteConfig']
     end
@@ -77,6 +79,28 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model News do
+    edit do
+      field :name
+      field :description, :ck_editor
+    end
+  end
+
+  config.model Material do
+    edit do
+      field :name
+    end
+  end
+
+  config.model MaterialItem do
+    parent Material
+    edit do
+      field :name
+      field :material
+      field :description, :ck_editor
+    end
+  end
+
   config.model SiteConfig do
     field :title do
       html_attributes do
@@ -93,6 +117,8 @@ RailsAdmin.config do |config|
         {:style => "width: 100%"}
       end
     end
+    field :about_us, :ck_editor
+    field :qc, :ck_editor
   end
 
   config.model Category do

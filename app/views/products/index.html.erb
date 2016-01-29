@@ -1,4 +1,5 @@
- <div class="container">
+<div class="container">
+<% if @features %>
     <% @features.each do |f| %>
    <div class="row" style="padding: 10px;padding-left:15px;">
        <div class="panel panel-default" style="margin-bottom: 5px;">
@@ -8,7 +9,7 @@
                 <div class="row">
                      <% group.each do |product| %>
                       <div class="col-md-2">
-                        <div class="thumbnail" style="border:0px;">
+                        <div class="thumbnail" style="border:0px;padding:0px;">
                         <% pic = product.pictures.first %>
                             <% if pic %>
                             <%= link_to(image_tag(pic.url, :style=> "margin-left:0px;", :size => "150x150"), product_path(product)) %>
@@ -23,5 +24,21 @@
    </div>
    </div>
    <% end %>
-
+<% else %>
+  <div class="row" style="padding:10px;padding-left:15px;">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">Products</div>
+       <div class="panel-body" style="background: #eeeeee;">
+         <ul class="list-group">
+         <% @products.each do |p| %>
+           <li class="list-group-item">
+             <%= link_to p.name, product_path(p) %>
+           </li>
+         <% end %>
+         </ul>
+         <%= paginate @products %>
+       </div>
+    </div>
+  </div>
+<% end %>
 </div>

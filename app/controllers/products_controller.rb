@@ -4,7 +4,11 @@ class ProductsController < FrontendController
   # GET /products
   # GET /products.json
   def index
-    @features = Feature.all
+    if params[:q].nil? || params[:q].strip == ""
+      @features = Feature.all
+    else
+      @products = Product.where("name like '%#{params[:q]}%'").page params[:page] 
+    end
   end
 
   # GET /products/1

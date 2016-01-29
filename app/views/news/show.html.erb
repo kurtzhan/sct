@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row" style="padding:10px; padding-left: 15px;">
+    <div class="panel panel-default">
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;"><%= @news.name %></div>
+         <div class="panel-body" style="background: #eeeeee;">
+           <%= @news.description.html_safe if @news.description %>
+         </div>
+    </div>
+  </div>
+</div>

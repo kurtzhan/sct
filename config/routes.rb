@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :materials, :only => [:index] do
+    resources :material_items, :only => [:show]
+  end
+  match 'contact', to: 'contact#index', via: [:get, :post]
+
+  get 'qc', to: 'qc#index'
+
+  get 'about_us', to: 'about_us#index'
+
+  resources :news, :only => [:index, :show]
   resources :product_pictures, :only => []
   resources :category_pictures, :only => []
   get 'home_page/index'

@@ -29,21 +29,11 @@
           <ul class="nav navbar-nav" style="float:right">
             <li><%= link_to image_tag('/images/home.jpg', :size => "30x30", :style => "margin-top:10px;"), root_path, :style => "padding:0px" %></li>
             <%= content_tag(:li, link_to("Products", products_path)) %>
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><%= link_to "Bronze Alloys", materials_path %></li>
+            <li><%= link_to "About", about_us_path %></li>
+            <li><%= link_to("News", news_index_path) %></li>
+            <li><%= link_to "Q & C", qc_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           </ul>
@@ -54,86 +44,47 @@
 
     <div class="container">
     <div class="row">
-      <div class="col-sm-4" style="padding-right:0px;">
-      <div><%= image_tag "logo.png" %></div>
-      <div><input type="text"  style="width:230px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product"/><input class="btn btn-primary btn-sm" type="button" value="search" /></div>
+      <div class="col-sm-3" style="padding-right:0px;">
+      <div><%= image_tag "logo.png", :style => "width:230px;height:110px" %></div>
+      <div>
+         <%= form_tag('/products', method: 'get') do %>
+         <input type="text"  style="width:175px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" />
+         <% end %>
       </div>
-      <div class="col-sm-8" style="padding-left:<%= @user_agent == "firefox" ? '7px' : '11px' %>;padding-right:0px;"> 
-        <%= image_tag "header.png", :size => "635x142" %>
+      </div>
+      <div class="col-sm-9" style="padding-left:<%= @user_agent == "firefox" ? '7px' : '11px' %>;padding-right:0px;"> 
+        <%= image_tag "header.png", :size => "715x142" %>
       </div>
     </div>
     </div>
       <%= yield %>
-      <div class="container">
-    <div  class="row" style="margin-top:15px;">
-    <div class="col-sm-4" style="padding-right:0px;">
-        <div class="card footer_item">
-          <div class="card-block">
-            <h4 class="card-title" style="border-bottom: 1px solid #fff;">Navigation</h4>
-            <ul class="nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Another link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+<div style='height:100px;'></div>
+<div class="navbar navbar-fixed-bottom" style="background:#812215">
+  <div class="container" style="color:#ffffff">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Navigation</h3>
+        <ul style="list-style-type:none;padding-left:0px;">
+          <li><%= link_to "Home", root_path, :style => "color:#ffffff" %></li>
+          <li><%= link_to "About Us", about_us_path, :style => "color:#ffffff" %></li>
+          <li><%= link_to("News", news_index_path, :style => "color:#ffffff") %></li>
+          <li><%= link_to "Contact", contact_path, :style => "color:#ffffff" %></li>
         </ul>
-          </div>
-        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Products</h3>
+      </div>
+      <div class="col-sm-4">
+        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Contact</h3>
+        <ul style="list-style-type:none;padding-left:0px;">
+          <li><i class="fa fa-envelope"></i> sales@sinobronze.com</li>
+          <li><i class="fa fa-phone"></i> 0086 28 8669 3910</li>
+          <li><i class="fa fa-fax"></i> 0086 28 8625 0130</li>
+        </ul>
+      </div>
     </div>
-        <div class="col-sm-4" >
-<div class="card footer_item">
-  <div class="card-block">
-    <h4 class="card-title" style="border-bottom: 1px solid #fff;">Products</h4>
-    <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
   </div>
 </div>
-    </div>
-        <div class="col-sm-4" style="padding-left:0px;">
-<div class="card footer_item">
-  <div class="card-block">
-    <h4 class="card-header"  style="border-bottom: 1px solid #fff;">Contact </h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <span class="glyphicon glyphicon-search"></span>
-<i class="fa fa-camera-retro fa-lg"></i>
-<i class="fa fa-home fa-lg" style="color:#000"></i>
-<i class="fa fa-phone fa-lg" style="color:#ccc"></i>
-<i class="fa fa-fax fa-lg" style="color:#ccc"></i> 
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-block">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-    </div>
-    </div>
-    </div>
-
-
   </body>
 
   </body>

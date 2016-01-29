@@ -7,8 +7,9 @@ class Ckeditor::Picture < Ckeditor::Asset
                     :styles => {  
                       :original => {  
                         :geometry => '640x960>',
-                        :watermark_path => "#{Rails.root}/public/images/logo-black.png",
-                        :position => 'Center'
+                        :watermark_path => "#{Rails.root}/public/images/watermark.png",
+                        :banner_watermark_path => "#{Rails.root}/public/images/watermark_banner.png",
+                        :position => 'South'
                       },
                           :medium => "400x265#", :thumb => "200x133#"
                     }
