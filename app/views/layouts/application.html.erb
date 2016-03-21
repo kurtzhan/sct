@@ -27,9 +27,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav" style="float:right">
-            <li><%= link_to image_tag('/images/home.jpg', :size => "30x30", :style => "margin-top:10px;"), root_path, :style => "padding:0px" %></li>
+            <li><%= link_to image_tag('/images/home.png', :size => "30x30", :style => "margin-top:10px;"), root_path, :style => "padding:0px" %></li>
             <%= content_tag(:li, link_to("Products", products_path)) %>
-            <li><%= link_to "Bronze Alloys", materials_path %></li>
+            <li><%= link_to "BronzeAlloys", materials_path %></li>
             <li><%= link_to "About", about_us_path %></li>
             <li><%= link_to("News", news_index_path) %></li>
             <li><%= link_to "Q & C", qc_path %></li>
@@ -45,47 +45,48 @@
     <div class="container">
     <div class="row">
       <div class="col-sm-3" style="padding-right:0px;">
-      <div><%= image_tag "logo.png", :style => "width:230px;height:110px" %></div>
+      <div><%= image_tag "/images/logo-address-website.jpg", :style => "width:230px;height:110px" %></div>
       <div>
          <%= form_tag('/products', method: 'get') do %>
-         <input type="text"  style="width:175px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" />
+         <input type="text"  style="width:170px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" style="margin-top:-7px" />
          <% end %>
       </div>
       </div>
       <div class="col-sm-9" style="padding-left:<%= @user_agent == "firefox" ? '7px' : '11px' %>;padding-right:0px;"> 
-        <%= image_tag "header.png", :size => "715x142" %>
+        <%= image_tag "/images/home_banner.jpg", :size => "715x142" %>
       </div>
     </div>
     </div>
       <%= yield %>
-<div style='height:100px;'></div>
-<div class="navbar navbar-fixed-bottom" style="background:#812215">
+<div style="height:10px;"></div>
+<div class="navbar navbar-fixed-bottom footer">
   <div class="container" style="color:#ffffff">
     <div class="row">
-      <div class="col-sm-4">
-        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Navigation</h3>
-        <ul style="list-style-type:none;padding-left:0px;">
-          <li><%= link_to "Home", root_path, :style => "color:#ffffff" %></li>
-          <li><%= link_to "About Us", about_us_path, :style => "color:#ffffff" %></li>
-          <li><%= link_to("News", news_index_path, :style => "color:#ffffff") %></li>
-          <li><%= link_to "Contact", contact_path, :style => "color:#ffffff" %></li>
-        </ul>
+      <div class="col-sm-2" style="padding-right:0px">
+        <div style="padding-top:15px;">
+        <%= image_tag('/images/email.png', :size => "30x30") %><span>sales@sinobronze.com</span>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Products</h3>
+      <div class="col-sm-2" style="padding-right:0px">
+        <div style="padding-top:15px;">
+        <%= image_tag('/images/telephone.png', :size => "30x30") %><span>0086 28 8669 3910</span>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <h3 style="border-bottom: 1px solid #ffffff;font-size:14px;">Contact</h3>
-        <ul style="list-style-type:none;padding-left:0px;">
-          <li><i class="fa fa-envelope"></i> sales@sinobronze.com</li>
-          <li><i class="fa fa-phone"></i> 0086 28 8669 3910</li>
-          <li><i class="fa fa-fax"></i> 0086 28 8625 0130</li>
-        </ul>
+      <div class="col-sm-2">
+        <div style="padding-top:15px;">
+        <%= image_tag('/images/sitemap.png', :size => "30x30") %><span><%= link_to "Sitemap", sitemap_path, :style=>"color:#ffffff" %></span>
+        </div>
+      </div>
+      <div class="col-sm-4"><div style="padding-top:20px;text-align:right;">SINOBRONZE MFG CO., LTD. 2008</div>
+      </div>
+      <div class="col-sm-2">
+        <div style="padding-top:20px;">
+        &reg; All Rights Reserved
+        </div>
       </div>
     </div>
   </div>
 </div>
-  </body>
-
+  <%= javascript_include_tag 'scroll_top/arrow92', 'data-turbolinks-track' => true %>
   </body>
 </html>
