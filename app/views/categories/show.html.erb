@@ -35,9 +35,10 @@
                 <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Material", product_path(product) %></div>
                 <div style="padding-left:12px;">
                    <%= product.short_description %>
+                   <div><span class="badge">pdf</span></div>
                 </div>
-                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Sizes & Details", product_path(product) %></div>
-                <ul class="list-group">
+                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Sizes & Details", product_path(product) %><div style="padding-left:12px;"><span class="badge">pdf</span></div></div>
+                <ul class="list-group" style="display:none">
                       <% product.attachment_files.each do |f| %>
                       <% f.name =~ /^(.*)\.(.*)$/ %>
                       <% filename = f["filename"] || $1 %>

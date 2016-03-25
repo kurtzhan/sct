@@ -87,12 +87,16 @@ RailsAdmin.config do |config|
   end
 
   config.model Material do
+    label "Bronze Alloy"
+    label_plural "Bronze Alloys"
     edit do
       field :name
     end
   end
 
   config.model MaterialItem do
+    label "Bronze Code"
+    label_plural "Bronze Codes"
     parent Material
     edit do
       field :name
@@ -157,6 +161,8 @@ RailsAdmin.config do |config|
   end
 
   config.model Ckeditor::AttachmentFile do
+    label "PDF"
+    label_plural "PDF"
     list do
       field :id
       field :name
@@ -207,6 +213,11 @@ RailsAdmin.config do |config|
 
   config.model CategoryPicture do
     parent Category
+ #   configure :preview do
+ #     pretty_value do
+ #       bindings[:view].tag(:img, { :src => bindings[:object].picture.url(:thumb) })
+ #     end
+ #   end
   end
 
   config.model ProductPicture do

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sitemap', to: 'sitemap#index'
+
   resources :materials, :only => [:index] do
     resources :material_items, :only => [:show]
   end

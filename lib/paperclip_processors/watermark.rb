@@ -15,6 +15,7 @@ module Paperclip
       dst = Tempfile.new([@basename].compact.join("."))
       dst.binmode
 
+      return super if attachment.to_s =~ /no_watermark\./
       return super unless @watermark_path
 
       # remove -auto-orient parameter to handle error

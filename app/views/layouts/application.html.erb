@@ -23,7 +23,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "Sino Bronze MFG Co., Ltd.", root_path, :class => "navbar-brand" %>
+          <div style="padding-top:10px;">
+          <%= form_tag('/products', method: 'get') do %>
+         <input type="text"  style="width:170px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" style="margin-top:-7px" />
+         <% end %>
+          </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav" style="float:right">
@@ -44,16 +48,8 @@
 
     <div class="container">
     <div class="row">
-      <div class="col-sm-3" style="padding-right:0px;">
-      <div><%= image_tag "/images/logo-address-website.jpg", :style => "width:230px;height:110px" %></div>
-      <div>
-         <%= form_tag('/products', method: 'get') do %>
-         <input type="text"  style="width:170px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" style="margin-top:-7px" />
-         <% end %>
-      </div>
-      </div>
-      <div class="col-sm-9" style="padding-left:<%= @user_agent == "firefox" ? '7px' : '11px' %>;padding-right:0px;"> 
-        <%= image_tag "/images/home_banner.jpg", :size => "715x142" %>
+      <div class="col-sm-12">
+        <%= image_tag "/images/banner-8.2.jpg", :style => "width:955px" %>
       </div>
     </div>
     </div>
@@ -63,24 +59,24 @@
   <div class="container" style="color:#ffffff">
     <div class="row">
       <div class="col-sm-2" style="padding-right:0px">
-        <div style="padding-top:15px;">
-        <%= image_tag('/images/email.png', :size => "30x30") %><span>sales@sinobronze.com</span>
+        <div style="padding-top:20px;">
+        <%= image_tag('/images/email.png', :size => "15x15") %><span>sales@sinobronze.com</span>
         </div>
       </div>
       <div class="col-sm-2" style="padding-right:0px">
-        <div style="padding-top:15px;">
-        <%= image_tag('/images/telephone.png', :size => "30x30") %><span>0086 28 8669 3910</span>
+        <div style="padding-top:20px;">
+        <%= image_tag('/images/telephone.png', :size => "15x15", :style=>"margin-top:-2px") %><span>0086 28 8669 3910</span>
         </div>
       </div>
       <div class="col-sm-2">
-        <div style="padding-top:15px;">
-        <%= image_tag('/images/sitemap.png', :size => "30x30") %><span><%= link_to "Sitemap", sitemap_path, :style=>"color:#ffffff" %></span>
+        <div style="padding-top:20px;">
+        <%= image_tag('/images/sitemap.png', :size => "15x15") %><span><%= link_to "Sitemap", sitemap_path, :style=>"color:#ffffff" %></span>
         </div>
       </div>
       <div class="col-sm-4"><div style="padding-top:20px;text-align:right;">SINOBRONZE MFG CO., LTD. 2008</div>
       </div>
       <div class="col-sm-2">
-        <div style="padding-top:20px;">
+        <div style="padding-top:20px;" style="position:relative" id="v_container">
         &reg; All Rights Reserved
         </div>
       </div>

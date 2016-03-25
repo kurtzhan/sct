@@ -14,24 +14,22 @@
     width: 110px !important;
   }
   .simple_captcha .simple_captcha_label{font-size: 12px;}
-  .simple_captcha .simple_captcha_field input{
+  .simple_captcha input{
     width: 150px !important;
     font-size: 16px;
     border: none;
-    background-color: #efefef;
+    height: 34px;
+    background-color:#ffffff;
+    font-size:14px;
+    padding:6px 12px;
+    border:1px solid #ccc;
+    border-radius:4px;
   }
 </style>
 
 <div class='simple_captcha'>
-  <div class='simple_captcha_image'>
-    <%= simple_captcha_options[:image] %>
-  </div>
-
-  <div class='simple_captcha_field'>
-    <%= simple_captcha_options[:field] %>
-  </div>
-
-  <div class='simple_captcha_refresh_button'>
-    <%= simple_captcha_options[:refresh_button] %>
-  </div>
+  <%= simple_captcha_options[:field] %> <%= simple_captcha_options[:image] %> <%= simple_captcha_options[:refresh_button] %>
 </div>
+<script>
+  $(".simple_captcha a").addClass("btn btn-primary btn-sm");
+</script>
