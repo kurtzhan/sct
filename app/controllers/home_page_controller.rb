@@ -3,6 +3,9 @@ class HomePageController < FrontendController
       @categories = Category.all
   end
 
+  def test
+    render :text => "ok, kurt"
+  end
   private
   def set_current_tab
     @current_tab = 'home'

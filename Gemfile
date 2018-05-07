@@ -27,7 +27,7 @@ gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'sprockets', '2.11.0'
-
+gem 'country_select'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -39,6 +39,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'kaminari'
 gem 'simple_captcha2', require: 'simple_captcha'
+gem 'passenger'
+gem 'rmagick'
+gem 'selenium-webdriver'
+gem 'capybara'
+gem 'headless'
+gem 'mechanize'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

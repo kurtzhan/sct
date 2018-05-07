@@ -6,6 +6,12 @@ class ContactController < FrontendController
         params.permit!
         m = Message.new params[:message]
         m.save!
+        begin
+        ContactMailer.message_email(m).deliver_later
+        #raise 'test'
+        rescue
+        logger.info 'failed to send message email'
+        end
         @flash_message = "Your message has been sent successfully, we'll contact you soon. Thank you!"
         @succeed = true
       else

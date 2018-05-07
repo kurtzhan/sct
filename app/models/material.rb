@@ -1,4 +1,5 @@
 class Material < ActiveRecord::Base
+#  self.table_name = 'materials'
   has_many :material_items
 
   extend FriendlyId

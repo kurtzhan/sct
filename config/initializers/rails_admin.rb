@@ -91,6 +91,7 @@ RailsAdmin.config do |config|
     label_plural "Bronze Alloys"
     edit do
       field :name
+      field :description
     end
   end
 
@@ -102,6 +103,21 @@ RailsAdmin.config do |config|
       field :name
       field :material
       field :description, :ck_editor
+      field :title do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_keywords do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
+      field :meta_description do
+        html_attributes do
+          {:style => "width: 100%"}
+        end
+      end
     end
   end
 

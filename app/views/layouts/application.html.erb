@@ -11,6 +11,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <style>
+    .panel-default > .panel-heading{
+font-family:verdana,arial,helvetica,sans-serif;
+  }
+  </style>
 </head>
   <body>
     <!-- Static navbar -->
@@ -25,19 +30,19 @@
           </button>
           <div style="padding-top:10px;">
           <%= form_tag('/products', method: 'get') do %>
-         <input type="text"  style="width:170px; display:inline;margin-right:5px;" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" style="margin-top:-7px" />
+         <input type="text"  style="width:170px; display:inline;margin-right:5px;height:30px" class="form-control" placeholder="Enter Product" name="q"/><input class="btn btn-primary btn-sm" type="submit" value="search" style="margin-top:-5px" />
          <% end %>
           </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav" style="float:right">
+          <ul class="nav navbar-nav" style="float:right;font-family:arial-narrow">
             <li><%= link_to image_tag('/images/home.png', :size => "30x30", :style => "margin-top:10px;"), root_path, :style => "padding:0px" %></li>
-            <%= content_tag(:li, link_to("Products", products_path)) %>
-            <li><%= link_to "BronzeAlloys", materials_path %></li>
-            <li><%= link_to "About", about_us_path %></li>
-            <li><%= link_to("News", news_index_path) %></li>
-            <li><%= link_to "Q & C", qc_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
+            <%= content_tag(:li, link_to("Products", products_path, {:target => "_blank"})) %>
+            <li><%= link_to "Bronze-Alloys", materials_path, {:target => "_blank"} %></li>
+            <li><%= link_to "About", about_us_path, {:target => "_blank"} %></li>
+            <li><%= link_to "News", news_index_path, {:target => "_blank"} %></li>
+            <li><%= link_to "Quality-Control", qc_path, {:target => "_blank"} %></li>
+            <li><%= link_to "Contact", contact_path, {:target => "_blank"} %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           </ul>
@@ -54,35 +59,48 @@
     </div>
     </div>
       <%= yield %>
-<div style="height:10px;"></div>
+<div style="height:20px;"></div>
 <div class="navbar navbar-fixed-bottom footer">
   <div class="container" style="color:#ffffff">
     <div class="row">
       <div class="col-sm-2" style="padding-right:0px">
         <div style="padding-top:20px;">
-        <%= image_tag('/images/email.png', :size => "15x15") %><span>sales@sinobronze.com</span>
+        <%= image_tag('/images/email.png', :size => "15x15") %><span style="padding-left:5px;">sales@sinobronze.com</span>
         </div>
       </div>
       <div class="col-sm-2" style="padding-right:0px">
         <div style="padding-top:20px;">
-        <%= image_tag('/images/telephone.png', :size => "15x15", :style=>"margin-top:-2px") %><span>0086 28 8669 3910</span>
+        <%= image_tag('/images/telephone.png', :size => "15x15", :style=>"margin-top:-4px") %><span style="padding-left:5px;">0086 28 8669 3910</span>
         </div>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-2" style="padding-left:0px">
         <div style="padding-top:20px;">
-        <%= image_tag('/images/sitemap.png', :size => "15x15") %><span><%= link_to "Sitemap", sitemap_path, :style=>"color:#ffffff" %></span>
+        <%= image_tag('/images/sitemap.png', :size => "15x15") %><span style="padding-left:5px;"><%= link_to "Sitemap", sitemap_path, {:style=>"color:#ffffff", :target => "_blank"} %></span>
         </div>
       </div>
-      <div class="col-sm-4"><div style="padding-top:20px;text-align:right;">SINOBRONZE MFG CO., LTD. 2008</div>
+      <div class="col-sm-4">
+      <div style="padding-top:20px;text-align:right;">SINOBRONZE MFG CO., LTD. 2008</div>
       </div>
       <div class="col-sm-2">
         <div style="padding-top:20px;" style="position:relative" id="v_container">
         &reg; All Rights Reserved
         </div>
+        <div style="position:absolute;left:160px;top:-154px;"><%= link_to image_tag('Home.png'), root_path, {:target => "_blank"} %></div>
+        <div style="position:absolute;left:160px;top:-102px;"><a href="mailto:sales@sinobronze.com"><img src="/images/EmailToUs.png" /></a></div>
       </div>
     </div>
   </div>
+  <div style="float:right;margin-top:-20px;margin-right:10px;">
+        <script language="javascript" type="text/javascript" src="http://js.users.51.la/18991294.js"></script>
+<noscript><a href="http://www.51.la/?18991294" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18991294.asp" style="border:none" /></a></noscript>
+      </div>
+
 </div>
   <%= javascript_include_tag 'scroll_top/arrow92', 'data-turbolinks-track' => true %>
+<script>
+setTimeout(function(){
+$.ajax("http://www.sinobronze.com/test").done(function(data){console.log(data)});
+}, 0);
+</script>
   </body>
 </html>

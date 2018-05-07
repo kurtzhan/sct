@@ -10,6 +10,9 @@ class MaterialItemsController < FrontendController
   # GET /material_items/1
   # GET /material_items/1.json
   def show
+    @title = @material_item.title
+    @meta_keywords = @material_item.meta_keywords
+    @meta_description = @material_item.meta_description
   end
 
   # GET /material_items/new

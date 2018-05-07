@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   get 'sitemap', to: 'sitemap#index'
 
-  resources :materials, :only => [:index] do
-    resources :material_items, :only => [:show]
+  resources :materials, :path => "bronze-alloys",  :only => [:index] do
+    resources :material_items, :path => "bronze-codes", :only => [:show]
   end
   match 'contact', to: 'contact#index', via: [:get, :post]
 
   get 'qc', to: 'qc#index'
 
   get 'about_us', to: 'about_us#index'
+  get 'test', to: 'home_page#test'
 
   resources :news, :only => [:index, :show]
   resources :product_pictures, :only => []

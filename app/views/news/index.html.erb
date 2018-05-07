@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row" style="padding:10px;padding-left:15px;">
+  <div class="row" style="padding:10px;padding-left:15px;padding-top:1px">
     <div class="panel panel-default">
-      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">News List</div>
+      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:13px;font-family:arial narrow">News List</div>
        <div class="panel-body" style="background: #eeeeee;">
          <ul class="list-group">
          <% @news.each do |news| %>
-           <li class="list-group-item">
+           <li class="list-group-item" style="font-family:arial narrow">
              <span class="badge"><%= news.created_at.strftime("%Y-%m-%d") %></span>
-             <%= link_to news.name, news_path(news) %>
+             <%= link_to news.name, news_path(news), :target => "_blank" %>
            </li>
          <% end %>
          </ul>

@@ -1,6 +1,6 @@
 <style>
 .flash-message {
-  margin-left:160px;
+  margin-left:120px;
   margin-bottom:20px;
   padding: 5px;
 }
@@ -16,11 +16,11 @@
 }
 .control-label{
   text-align:left !important;
-  padding-left: 75px !important;
+  padding-left: 55px !important;
 }
 address{
 margin-bottom:0px !important;
-margin-left: 65px !important;
+margin-left: 40px !important;
 }
 address h3{
 margin-top: 0px !important;
@@ -28,17 +28,12 @@ margin-bottom:10px !important;
 }
 </style>
 <div class="container">
-  <div class="row" style="padding: 10px;padding-left:15px;">
+  <div class="row" style="padding: 10px;padding-left:15px;padding-top:1px">
       <div class="panel panel-default">
-         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">Contact</div>
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:13px;">Contact</div>
          <div class="panel-body" style="background: #eeeeee;">
-<% if @flash_message %>
-<div class="flash-message <%= @succeed ? "notice" : "error" %>">
-  <div class="container container_12 clearfix">
-    <%= @flash_message %>
-  </div>
-</div>
-<% end %>
+<div class="row">
+<div class="col-md-10">
 <%= form_tag('/contact', :class => 'form-horizontal') do %>
   <div class="form-group">
     <label for="company" class="col-sm-2 control-label">Company</label>
@@ -98,6 +93,12 @@ margin-bottom:10px !important;
     </div>
   </div>
   <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label">Subject</label>
+    <div class="col-sm-10">
+      <input type="text" id="subject" class="form-control" placeholder="Subject" name="message[subject]" required="required" value="<%= @succeed == false ? params[:message][:subject] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
     <label for="message" class="col-sm-2 control-label">Message</label>
     <div class="col-sm-10">
 <textarea id="message" placeholder="Textarea" rows="3" class="form-control" name="message[body]" required="required"><%= @succeed == false ? params[:message][:body] : '' %></textarea>
@@ -114,7 +115,19 @@ margin-bottom:10px !important;
       <button type="submit" class="btn btn-primary">Send to SinoBronze MFG Co., Ltd.</button>
     </div>
   </div>  
+  <% if @flash_message %>
+  <div class="flash-message <%= @succeed ? "notice" : "error" %>">
+    <div class="container container_12 clearfix">
+      <%= @flash_message %>
+    </div>
+  </div>
+  <% end %>
 <% end %>
+</div>
+<div class="col-md-2" style="padding-left:5px;">
+  <%= image_tag 'contact_us-11.jpg' %>
+</div>
+</div>
          </div>
       </div>
    </div>
@@ -122,8 +135,10 @@ margin-bottom:10px !important;
 <div class="container" style="margin-top:-25px;">
   <div class="row" style="padding: 10px;padding-left:15px;">
       <div class="panel panel-default">
-         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">Post Address</div>
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:13px;">Post Address</div>
          <div class="panel-body" style="background: #eeeeee;">
+<div class="row">
+  <div class="col-md-9">
            <address><h3>SINOBRONZE MFG CO., LTD.</h3></address>
            <address>
              <strong>Contact</strong> Mr. Chen
@@ -143,6 +158,11 @@ margin-bottom:10px !important;
 <address>
              <strong>Website</strong> www.sinobronze.com
            </address>
+  </div>
+  <div class="col-md-3">
+    <%= link_to image_tag('find_us_sinobronze.jpg', :style => "width:200px;"), image_path('find_us_sinobronze.jpg'), :target => "_blank" %>
+  </div>
+</div>
          </div>
       </div>
   </div>

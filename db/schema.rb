@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120025418) do
+ActiveRecord::Schema.define(version: 20161228061901) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -33,13 +33,27 @@ ActiveRecord::Schema.define(version: 20151120025418) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "slug",       limit: 255
+    t.string   "name",             limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "slug",             limit: 255
+    t.text     "description",      limit: 4294967295
+    t.string   "title",            limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.string   "meta_description", limit: 255
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
+  create_table "category_pictures", force: :cascade do |t|
+    t.integer  "category_id", limit: 4,   null: false
+    t.integer  "picture_id",  limit: 4,   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image_type",  limit: 255
+  end
+
+  add_index "category_pictures", ["category_id", "picture_id"], name: "uniq_category_id_picture_id", unique: true, using: :btree
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -52,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151120025418) do
     t.integer  "height",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filename",          limit: 255
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
@@ -79,6 +94,50 @@ ActiveRecord::Schema.define(version: 20151120025418) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "material_items", force: :cascade do |t|
+    t.string   "name",             limit: 255,        null: false
+    t.string   "slug",             limit: 255,        null: false
+    t.integer  "material_id",      limit: 4,          null: false
+    t.text     "description",      limit: 4294967295
+    t.string   "title",            limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.string   "meta_description", limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string   "name",        limit: 255,        null: false
+    t.text     "description", limit: 4294967295
+    t.string   "slug",        limit: 255,        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "company",    limit: 255
+    t.string   "country",    limit: 255
+    t.string   "address",    limit: 255
+    t.string   "zip_code",   limit: 255
+    t.string   "gender",     limit: 255
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255,   null: false
+    t.string   "email_2",    limit: 255
+    t.string   "telephone",  limit: 255
+    t.string   "subject",    limit: 255
+    t.text     "body",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string   "name",        limit: 255,        null: false
+    t.text     "description", limit: 4294967295, null: false
+    t.string   "slug",        limit: 255,        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "product_attachment_files", force: :cascade do |t|
     t.integer  "product_id",         limit: 4, null: false
     t.integer  "attachment_file_id", limit: 4, null: false
@@ -97,16 +156,47 @@ ActiveRecord::Schema.define(version: 20151120025418) do
 
   add_index "product_features", ["product_id", "feature_id"], name: "uniq_product_id_feature_id", unique: true, using: :btree
 
+  create_table "product_pictures", force: :cascade do |t|
+    t.integer  "product_id", limit: 4, null: false
+    t.integer  "picture_id", limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "product_pictures", ["product_id", "picture_id"], name: "uniq_product_id_picture_id", unique: true, using: :btree
+
   create_table "products", force: :cascade do |t|
     t.integer  "category_id",       limit: 4
     t.string   "name",              limit: 255
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.text     "body",              limit: 4294967295
+    t.text     "description",       limit: 4294967295
     t.string   "slug",              limit: 255
-    t.integer  "ckeditor_asset_id", limit: 4
+    t.string   "title",             limit: 255
+    t.string   "meta_keywords",     limit: 255
+    t.string   "meta_description",  limit: 255
+    t.text     "short_description", limit: 65535
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
+
+  create_table "simple_captcha_data", force: :cascade do |t|
+    t.string   "key",        limit: 40
+    t.string   "value",      limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
+
+  create_table "site_configs", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.string   "meta_description", limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.text     "about_us",         limit: 4294967295
+    t.text     "qc",               limit: 4294967295
+  end
 
 end

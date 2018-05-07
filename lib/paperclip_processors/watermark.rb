@@ -20,7 +20,7 @@ module Paperclip
 
       # remove -auto-orient parameter to handle error
       params = "-gravity #{@position} #{transformation_command.join(" ")} #{is_banner ? @banner_watermark_path : @watermark_path} :source :dest".sub(/-auto-orient/, '')
-
+puts params
       begin
         success = Paperclip.run("composite", params, :source => "#{File.expand_path(src.path)}[0]", :dest => File.expand_path(dst.path))
       rescue PaperclipCommandLineError

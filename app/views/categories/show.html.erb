@@ -1,7 +1,7 @@
  <div class="container">
-   <div class="row" style="padding: 10px;padding-left:15px;">
+   <div class="row" style="padding: 10px;padding-left:15px;padding-top:1px">
        <div class="panel panel-default">
-         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;"><%= @category.name %></div>
+         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:13px;"><%= @category.name %></div>
            <div class="panel-body" style="background: #eeeeee;">
            <% banner = @category.category_pictures.where("image_type='banner'").first %>
            <% if banner && banner.picture %>
@@ -19,25 +19,25 @@
    <div class="row">
    <% group.each do |product| %>
       <div class="col-md-4">
-             <h3><%= link_to product.name, product_path(product) %></h3>
+             <h3><%= link_to product.name, product_path(product), :target => "_blank" %></h3>
 		<div class="row">
                <div class="col-md-6" style="padding-right:0px;">
                  <div class="thumbnail" style="border:0px;">
 			<% pic = product.pictures.first %>
 			<% if pic %>
-		      <%= link_to(image_tag(pic.url, :style=> "border-left: 3px solid #812215;margin-left:0px;", :size => "150x150"), product_path(product)) %>
+		      <%= link_to(image_tag(pic.url, :style=> "border-left: 3px solid #812215;margin-left:0px;", :size => "150x150"), product_path(product), :target => "_blank") %>
 		      <% end %>
 
                </div>
                </div>
                <div class="col-md-6" style="padding:0px;padding-left:5px;">
 
-                <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Material", product_path(product) %></div>
+                <div><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Material", product_path(product), :target => "_blank" %></div>
                 <div style="padding-left:12px;">
                    <%= product.short_description %>
                    <div><span class="badge">pdf</span></div>
                 </div>
-                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Sizes & Details", product_path(product) %><div style="padding-left:12px;"><span class="badge">pdf</span></div></div>
+                <div style="margin-top:5px;"><%= image_tag "fa-circle_8_0_812215_none.png" %>&nbsp;<%= link_to "Sizes & Details", product_path(product), :target => "_blank" %><div style="padding-left:12px;"><span class="badge">pdf</span></div></div>
                 <ul class="list-group" style="display:none">
                       <% product.attachment_files.each do |f| %>
                       <% f.name =~ /^(.*)\.(.*)$/ %>
