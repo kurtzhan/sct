@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
-
+  config.excluded_models << Language
+  config.excluded_models << NewsType
   ### Popular gems integration
 
   ## == Devise ==
@@ -50,6 +51,7 @@ RailsAdmin.config do |config|
     edit do
       field :category, :belongs_to_association
       field :name
+      field :language
       field :short_description
       field :description, :ck_editor
       field :title do
@@ -72,6 +74,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
+      field :language
       field :category
       field :slug
       field :created_at
@@ -82,7 +85,17 @@ RailsAdmin.config do |config|
   config.model News do
     edit do
       field :name
+      field :language
+      field :news_type
       field :description, :ck_editor
+    end
+
+    list do
+      field :id
+      field :name
+      field :language
+      field :news_type
+      field :description
     end
   end
 
@@ -139,11 +152,13 @@ RailsAdmin.config do |config|
     end
     field :about_us, :ck_editor
     field :qc, :ck_editor
+    field :language
   end
 
   config.model Category do
     edit do
       field :name
+      field :language
       field :description, :ck_editor
       field :title do
         html_attributes do
@@ -165,6 +180,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
+      field :language
       field :slug
       field :pictures
       field :created_at

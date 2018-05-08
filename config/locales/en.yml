@@ -20,11 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  simple_captcha:
-    placeholder: "Enter the image value"
-    label: "Enter the code in the box:"
-    refresh_button_text: "Refresh"
-    message:
-      default: "Secret Code did not match with the Image"
-      user: "The secret Image and code were different"
+  menus:
+    product_and_catalogue: "Product & Catalogue"
+    company_and_contact: "Company & Contact"
+    news_and_exhibitions: "News & Exhibitions"
+    materials_and_standards: "Materials & Standards"
+    sct_solutions: "SCT Solutions"
+    site_maps: "Site Map"
+  search: "Search"
+  enter_product: "Enter Product"

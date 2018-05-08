@@ -1,10 +1,33 @@
-<div class="container">
-  <div class="row" style="padding: 10px;padding-left:15px;padding-top:1px">
-      <div class="panel panel-default">
-         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:13px;">About Us</div>
-         <div class="panel-body" style="background: #ffffff;">
-           <%= @about_us.html_safe if @about_us %>
-         </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" style="margin-right:0px;padding-right:0px;">
+          <div class="panel panel-default" style="border-radius: 0px;background:#e46c0b">
+            <div class="panel-heading" style="background:#e46c0b">
+              <%= link_to "Bronze Alloys", materials_path, :target => "_blank" %><i class="fa fa-check-square" style="margin-left:10px;"></i>
+              <%= image_tag "card_right_header.png", :style => "position:absolute;right:1px;top:1px;width:30px;" %>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <% MaterialItem.order("id desc").limit(4).each do |m| %>
+                <li class="list-group-item" style="background:#e46c0b;border:0px;"><%= link_to m.full_name.truncate(30), material_material_item_path(m.material, m), :target => "_blank" %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9" style="margin-right:0px;padding-right:0px;">
+          <div class="panel panel-default"  style="border-radius: 0px;background:#f79647">
+            <div class="panel-heading" style="background:#58595b; color:#fff">
+              <%= t('menus.company_and_contact') %></i>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <% Category.order("id desc").limit(4).each do |c| %>
+                <li class="list-group-item" style="background:#f79647;border:0px;"><%= link_to c.name.truncate(30), category_path(c), :target => "_blank" %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
-</div>
+    </div>

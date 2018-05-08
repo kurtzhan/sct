@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228061901) do
+ActiveRecord::Schema.define(version: 20180508070327) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20161228061901) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",             limit: 255
+    t.integer  "language_id",      limit: 4
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "slug",             limit: 255
@@ -94,6 +95,12 @@ ActiveRecord::Schema.define(version: 20161228061901) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "languages", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "material_items", force: :cascade do |t|
     t.string   "name",             limit: 255,        null: false
     t.string   "slug",             limit: 255,        null: false
@@ -107,11 +114,10 @@ ActiveRecord::Schema.define(version: 20161228061901) do
   end
 
   create_table "materials", force: :cascade do |t|
-    t.string   "name",        limit: 255,        null: false
-    t.text     "description", limit: 4294967295
-    t.string   "slug",        limit: 255,        null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "name",       limit: 255, null: false
+    t.string   "slug",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -131,11 +137,19 @@ ActiveRecord::Schema.define(version: 20161228061901) do
   end
 
   create_table "news", force: :cascade do |t|
-    t.string   "name",        limit: 255,        null: false
-    t.text     "description", limit: 4294967295, null: false
-    t.string   "slug",        limit: 255,        null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "name",         limit: 255,        null: false
+    t.integer  "language_id",  limit: 4
+    t.integer  "news_type_id", limit: 4,          null: false
+    t.text     "description",  limit: 4294967295, null: false
+    t.string   "slug",         limit: 255,        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  create_table "news_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "product_attachment_files", force: :cascade do |t|
@@ -168,6 +182,7 @@ ActiveRecord::Schema.define(version: 20161228061901) do
   create_table "products", force: :cascade do |t|
     t.integer  "category_id",       limit: 4
     t.string   "name",              limit: 255
+    t.integer  "language_id",       limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.text     "description",       limit: 4294967295
@@ -193,6 +208,7 @@ ActiveRecord::Schema.define(version: 20161228061901) do
     t.string   "title",            limit: 255
     t.string   "meta_keywords",    limit: 255
     t.string   "meta_description", limit: 255
+    t.integer  "language_id",      limit: 4
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.text     "about_us",         limit: 4294967295

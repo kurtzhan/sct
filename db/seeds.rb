@@ -10,6 +10,15 @@ if Admin.count == 0
   Admin.create(:email => 'zlyaksa@yahoo.com', :password => '12345abc', :roles => [:superadmin])
 end
 
+['en', 'cn'].each do |l|
+  Language.find_or_create_by(:name => l)
+end
+
+['News', 'Exhibitions'].each do |l|
+  NewsType.find_or_create_by(:name => l)
+end
+
 if SiteConfig.count == 0
-  SiteConfig.create(:title => 'Sino Bronze', :meta_keywords => 'Sino Bronze', :meta_description => 'Sino Bronze')
+  SiteConfig.create(:title => 'SCT', :meta_keywords => 'SCT', :meta_description => 'SCT', :language_id => 1)
+  SiteConfig.create(:title => 'SCT', :meta_keywords => 'SCT', :meta_description => 'SCT', :language_id => 2)
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
   get 'sitemap', to: 'sitemap#index'
 
   resources :materials, :path => "bronze-alloys",  :only => [:index] do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get 'test', to: 'home_page#test'
 
   resources :news, :only => [:index, :show]
+end
   resources :product_pictures, :only => []
   resources :category_pictures, :only => []
   get 'home_page/index'
@@ -78,4 +80,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'home_page#index'
+  get '/:locale' => 'home_page#index'
 end

@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   include Ckeditor
   belongs_to :category
+  belongs_to :language
   has_many :product_pictures
   has_many :pictures, through: :product_pictures
 

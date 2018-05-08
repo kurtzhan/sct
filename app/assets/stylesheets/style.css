@@ -1,9 +1,9 @@
 .navbar-default{
-  background-color: #812215;
+  background-color: #58595b;
 }
 
 .navbar-default {
-    background-color: #812215;
+    background-color: #58595b;
     border-color: #E7E7E7;
 }
 /* title */
@@ -80,7 +80,19 @@ background-color:#812215; color:#fff;padding:10px;border-radius:5px;
 }
 
 .footer{
-height:50px;background:url('footer_bg.jpg') repeat-x;
+height:200px;
+background: #000;
+}
+
+.footer a{
+    color: #fff;
+}
+.footer img{
+    width:50px;
+    margin:8px;
+}
+.footer hr{
+    margin-bottom: 10px;
 }
 
 .nav > li > a {
@@ -140,4 +152,9 @@ color:#fff;
 
 .list-group.list-group-root > .list-group > .list-group > .list-group-item {
   padding-left: 45px;
+}
+
+.btn{
+    background-color: #fddb02;
+    color: #000;
 }

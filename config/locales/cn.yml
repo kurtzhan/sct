@@ -1,0 +1,10 @@
+cn:
+  menus:
+    product_and_catalogue: "产品目录"
+    company_and_contact: "关于我们"
+    news_and_exhibitions: "公司新闻"
+    materials_and_standards: "材料标准"
+    sct_solutions: "解决方案"
+    site_maps: "网站地图"
+  search: "搜索"
+  enter_product: "请输入产品名称"
