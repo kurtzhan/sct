@@ -5,6 +5,7 @@ class FrontendController < ApplicationController
 #  before_action :set_current_tab
   before_action :detect_user_agent
   before_action :set_meta_content
+  before_action :load_flash_pictures
 
   def index
       @categories = Category.all
@@ -27,5 +28,9 @@ class FrontendController < ApplicationController
     @title = site_config.title
     @meta_keywords = site_config.meta_keywords
     @meta_description = site_config.meta_description
+  end
+
+  def load_flash_pictures
+    @flash_pictures = FlashPicture.order("ordinal")
   end
 end

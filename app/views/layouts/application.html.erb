@@ -19,7 +19,7 @@ font-family:verdana,arial,helvetica,sans-serif;
 </head>
   <body>
     <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top" style="min-height: 40px">
+    <nav class="navbar navbar-default navbar-static-top" style="min-height: 40px;margin-bottom: 0px;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -48,31 +48,22 @@ font-family:verdana,arial,helvetica,sans-serif;
     <div class="container">
     <div class="row">
       <div class="col-sm-12">
-<div id="my-pics" class="carousel slide" data-ride="carousel" style="width:960px;margin:auto;">
+<div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1000x;margin:auto;">
 
 <!-- Indicators -->
-<ol class="carousel-indicators">
-<li data-target="#my-pics" data-slide-to="0" class="active"></li>
-<li data-target="#my-pics" data-slide-to="1"></li>
-<li data-target="#my-pics" data-slide-to="2"></li>
+<ol class="carousel-indicators" style="display:none">
+<% 0.upto(@flash_pictures.count - 1) do |index| %>
+<li data-target="#my-pics" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+<% end %>
 </ol>
 <!-- Content -->
 <div class="carousel-inner" role="listbox">
 
-<!-- Slide 1 -->
-<div class="item active">
-<%= image_tag "/images/banner-8.2.jpg", :style => "width:955px" %>
+<% @flash_pictures.each_with_index do |f, index| %>
+<div class="item<%= index == 0 ? ' active' : '' %>">
+<%= image_tag(f.picture.url, :size => "1000x200") %>
 </div>
-
-<!-- Slide 2 -->
-<div class="item">
-<%= image_tag "/images/banner-8.20.jpg", :style => "width:955px" %>
-</div>
-
-<!-- Slide 3 -->
-<div class="item">
-<%= image_tag "/images/banner-8.2.jpg", :style => "width:955px" %>
-</div>
+<% end %>
 
 </div>
 
@@ -91,7 +82,7 @@ font-family:verdana,arial,helvetica,sans-serif;
     </div>
     </div>
     <div class="container">
-      <div class="row" style="padding: 10px;padding-left:15px;padding-top:1px;">
+      <div class="row" style="padding:15px;padding-top:1px;">
         <div id="navbar" class="navbar-collapse collapse" style="background: #8a8a8a">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#"><%= t('menus.product_and_catalogue') %></a></li>
