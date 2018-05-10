@@ -21,5 +21,7 @@ class ApplicationController < ActionController::Base
     else
       I18n.locale = params[:locale] || I18n.default_locale
     end
+
+    @language_id = Language.find_by(:name => I18n.locale).id
   end
 end

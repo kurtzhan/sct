@@ -22,9 +22,7 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <% Category.order("id desc").limit(4).each do |c| %>
-                <li class="list-group-item" style="background:#f79647;border:0px;"><%= link_to c.name.truncate(30), category_path(c), :target => "_blank" %></li>
-                <% end %>
+                <%= @about_us.html_safe if @about_us %>
               </ul>
             </div>
           </div>

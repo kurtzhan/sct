@@ -158,3 +158,10 @@ color:#fff;
     background-color: #fddb02;
     color: #000;
 }
+.select_language{
+text-align:right;
+padding-top:6px;
+}
+.select_language a{
+color: #fff;
+}

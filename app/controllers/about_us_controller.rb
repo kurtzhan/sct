@@ -1,6 +1,6 @@
 class AboutUsController < FrontendController
   def index
-    @about_us = SiteConfig.first.about_us
+    @about_us = SiteConfig.find_by(:language_id => @language_id).about_us
   end
 
 private
