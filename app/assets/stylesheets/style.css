@@ -72,7 +72,7 @@
 }
 
 .container{
-    width: 1000px;
+    width: 1100px;
 }
 
 .footer_item{
@@ -174,4 +174,9 @@ padding-left:5px;
 }
 .mysm3{
 padding-left:0px;
+}
+.cat_col{
+    background: url(/images/category_heading.png);
+    background-repeat: no-repeat;
+    background-size: 268px 80px;
 }

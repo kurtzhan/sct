@@ -48,7 +48,7 @@ font-family:verdana,arial,helvetica,sans-serif;
     <div class="container">
     <div class="row">
       <div class="col-sm-12">
-<div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1000x;margin:auto;">
+<div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1100x;margin:auto;">
 <% @flash_pictures ||= [] %>
 <!-- Indicators -->
 <ol class="carousel-indicators" style="display:none">
@@ -61,7 +61,7 @@ font-family:verdana,arial,helvetica,sans-serif;
 
 <% @flash_pictures.each_with_index do |f, index| %>
 <div class="item<%= index == 0 ? ' active' : '' %>">
-<%= image_tag(f.picture.url, :size => "1000x200") %>
+<%= image_tag(f.picture.url, :size => "1100x200") %>
 </div>
 <% end %>
 
@@ -97,10 +97,23 @@ font-family:verdana,arial,helvetica,sans-serif;
           </div>
       </div>
 <div class="row myrow" style="padding-bottom:0px;vertical-align:top;margin-bottom:-5px;">
-<%= image_tag "/images/line.jpg", :style=>"width:970px;margin-top:-10px;"%>
+<%= image_tag "/images/line.jpg", :style=>"width:1070px;margin-top:-10px;"%>
 </div>
     </div>
-      <%= yield %>
+    <div class="container">
+      <div class="row myrow">
+        <div class="col-sm-3 mysm3 cat_col" style="margin-right:0px;padding-right:0px;min-height: 300px; background-color: #f2f2f2;">
+
+        </div>
+        <div class="col-sm-9 mysm9" style="margin-right:0px;padding-right:0px;">
+          <div class="panel panel-default"  style="border-radius: 0px;background:#feffff">
+            <div class="" style="background:#fddb02;height:6px"></div>
+            <div class="" style="background:#fff;height:5px"></div>
+              <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
 <div class="navbar navbar-fixed-bottom footer">
   <div class="container" style="color:#fff;">
     <div class="row" style="font-size:14px;">

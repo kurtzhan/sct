@@ -51,6 +51,7 @@ RailsAdmin.config do |config|
     edit do
       field :category, :belongs_to_association
       field :name
+      field :ordinal
       field :language
       field :short_description
       field :description, :ck_editor
@@ -74,6 +75,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
+      field :ordinal
       field :language
       field :category
       field :slug
@@ -158,6 +160,7 @@ RailsAdmin.config do |config|
   config.model Category do
     edit do
       field :name
+      field :ordinal
       field :language
       field :description, :ck_editor
       field :title do
@@ -180,6 +183,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
+      field :ordinal
       field :language
       field :slug
       field :pictures
