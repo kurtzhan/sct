@@ -1,1 +1,40 @@
-test
+<div>
+  <%= image_tag("/images/SCT_Company_and_Conatct.jpg", :style=>"width:797px") %>
+</div>
+<div>
+  <%= image_tag("/images/SCT_solutions.jpg", :style=>"width:797px") %>
+</div>
+<div class="" style="background:#fddb02;height:6px"></div>
+            <div class="" style="background:#fff;height:3px"></div>
+          <div class="panel panel-default"  style="border-radius: 0px;background:#feffff;margin-bottom:0px;">
+            <div class="panel-heading my-panel-heading" style="background-color:#58595b;color:#fff;">
+              <%= t('menus.product_and_catalogue') %></i>
+            </div>
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+              <% Category.where(:language_id => @language_id).order("ordinal").includes(:products).each_with_index do |c, index| %>
+              <div class="row" style="background:#d0d0d0">
+                <% if index % 2 == 0 %>
+                <div class="col-sm-7" style="padding-left:0px;">
+<%= image_tag(c.category_pictures.where(:image_type => "headshot").first.picture.url, :style=>"width:450px;") if c.category_pictures.where(:image_type => "headshot").first && c.category_pictures.where(:image_type => "headshot").first.picture%>
+                </div>
+                <div class="col-sm-5">
+<h3><%= "+" + c.name %></h3>
+<% c.products.order("ordinal").each do |p| %>
+<div><%= link_to "-" + p.name, product_path(p), :style => "color:#555" %></div>
+<% end %>
+                </div>
+                <% else %>
+                <div class="col-sm-5">
+<h3><%= "+" + c.name %></h3>
+<% c.products.order("ordinal").each do |p| %>
+<div><%= link_to "-" + p.name, product_path(p), :style => "color:#555" %></div>
+<% end %>
+                </div>
+                <div class="col-sm-7" style="padding-right:0px;">
+<%= image_tag(c.category_pictures.where(:image_type => "headshot").first.picture.url, :style=>"width:450px;") if c.category_pictures.where(:image_type => "headshot").first && c.category_pictures.where(:image_type => "headshot").first.picture%>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>

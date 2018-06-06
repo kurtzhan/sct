@@ -1,24 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+            <div class="panel-heading my-panel-heading">
+              <%= t('menus.product_and_catalogue') %></i>
+            </div>
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+              <% Category.where(:language_id => @language_id).order("ordinal").each_with_index do |c, index| %>
+              <div class="row" style="background:#d0d0d0;border-left:3px solid #fddb02;margin-top:5px;" id="<%= c.slug%>">
+                <div class="col-sm-7" style="padding-left:0px;border-left:5px solid #fff">
+<%= image_tag(c.category_pictures.where(:image_type => "headshot").first.picture.url, :style=>"width:450px;") if c.category_pictures.where(:image_type => "headshot").first%>
+                </div>
+                <div class="col-sm-5">
+<h3><%= "+" + c.name %></h3>
+<% c.products.order("ordinal").each do |p| %>
+<div><%= "-" + p.name %></div>
+<% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>

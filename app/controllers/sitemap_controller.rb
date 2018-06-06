@@ -1,4 +1,4 @@
-class SitemapController < ApplicationController
+class SitemapController < FrontendController
   def index
     
   end

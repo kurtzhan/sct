@@ -10,9 +10,12 @@ scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
   get 'qc', to: 'qc#index'
 
   get 'about_us', to: 'about_us#index'
+  post 'about_us', to: 'about_us#index'
   get 'test', to: 'home_page#test'
 
   resources :news, :only => [:index, :show]
+  resources :categories, :only => [:index]
+  resources :products, :only => [:show]
 end
   resources :product_pictures, :only => []
   resources :category_pictures, :only => []
@@ -21,9 +24,7 @@ end
   resources :features, :only => [:show]
   resources :product_attachment_files, :only => []
   mount Ckeditor::Engine => '/ckeditor'
-  resources :products, :only => [:index, :show]
   devise_for :admins
-  resources :categories, :only => [:show, :index]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

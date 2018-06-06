@@ -24,7 +24,7 @@ class FrontendController < ApplicationController
   end
   
   def set_meta_content
-    site_config = SiteConfig.first
+    site_config = SiteConfig.where(:language_id => @language_id).first
     @title = site_config.title
     @meta_keywords = site_config.meta_keywords
     @meta_description = site_config.meta_description

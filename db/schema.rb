@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508070327) do
+ActiveRecord::Schema.define(version: 20180521033855) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20180508070327) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",             limit: 255
+    t.integer  "ordinal",          limit: 4,          default: 1, null: false
     t.integer  "language_id",      limit: 4
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "slug",             limit: 255
     t.text     "description",      limit: 4294967295
     t.string   "title",            limit: 255
@@ -81,6 +82,13 @@ ActiveRecord::Schema.define(version: 20180508070327) do
   end
 
   add_index "features", ["slug"], name: "index_features_on_slug", unique: true, using: :btree
+
+  create_table "flash_pictures", force: :cascade do |t|
+    t.integer  "picture_id", limit: 4,             null: false
+    t.integer  "ordinal",    limit: 4, default: 1, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -182,9 +190,11 @@ ActiveRecord::Schema.define(version: 20180508070327) do
   create_table "products", force: :cascade do |t|
     t.integer  "category_id",       limit: 4
     t.string   "name",              limit: 255
+    t.integer  "ordinal",           limit: 4,          default: 1, null: false
     t.integer  "language_id",       limit: 4
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.string   "youtube_url",       limit: 255
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.text     "description",       limit: 4294967295
     t.string   "slug",              limit: 255
     t.string   "title",             limit: 255

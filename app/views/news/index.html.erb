@@ -1,33 +1,18 @@
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4" style="margin-right:0px;padding-right:0px;">
-          <div class="panel panel-default" style="border-radius: 0px;background:#e46c0b">
-            <div class="panel-heading" style="background:#e46c0b">
-              <%= link_to "Bronze Alloys", materials_path, :target => "_blank" %><i class="fa fa-check-square" style="margin-left:10px;"></i>
-              <%= image_tag "card_right_header.png", :style => "position:absolute;right:1px;top:1px;width:30px;" %>
-            </div>
-            <div class="panel-body">
-              <ul class="list-group">
-                <% MaterialItem.order("id desc").limit(4).each do |m| %>
-                <li class="list-group-item" style="background:#e46c0b;border:0px;"><%= link_to m.full_name.truncate(30), material_material_item_path(m.material, m), :target => "_blank" %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-8" style="margin-right:0px;padding-right:0px;">
-          <div class="panel panel-default"  style="border-radius: 0px;background:#f79647">
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
             <div class="panel-heading" style="background:#58595b; color:#fff">
               <%= t('menus.news_and_exhibitions') %></i>
             </div>
-            <div class="panel-body">
-              <ul class="list-group">
-                <% Category.order("id desc").limit(4).each do |c| %>
-                <li class="list-group-item" style="background:#f79647;border:0px;"><%= link_to c.name.truncate(30), category_path(c), :target => "_blank" %></li>
-                <% end %>
-              </ul>
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+              <% @news.each do |n| %>
+             <div class="row" style="border-bottom:2px solid #fddb02;padding:10px;padding-right:0px;">
+              <div class="col-sm-2">
+
+              </div>
+              <div class="col-sm-10" style="border-left:2px solid #fddb02;padding-right:0px;">
+                <h3 class="news_heading news_heading_<%= n.news_type_id %>" style="margin-top:0px;"><%= n.name %></h3>
+                <div><%= n.description.html_safe %></div>
+              </div>
+             </div>
+              <% end %>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>

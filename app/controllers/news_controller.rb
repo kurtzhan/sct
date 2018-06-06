@@ -4,7 +4,11 @@ class NewsController < FrontendController
   # GET /news
   # GET /news.json
   def index
-    @news = News.order("id desc").page params[:page]
+    if params[:type].nil?
+      @news = News.where(:language_id => @language_id).order("id desc").page params[:page]
+    else
+      @news = News.where(:news_type_id => params[:type], :language_id => @language_id).order("id desc").page params[:page]
+    end
   end
 
   # GET /news/1

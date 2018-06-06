@@ -1,12 +1,43 @@
-<div class="container">
-  <div class="row" style="padding: 10px;padding-left:15px;padding-top:1px">
-    <div class="panel panel-default">
-      <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">
-        <%= @product.name %>
-      </div>
-      <div class="panel-body">
-                <%= @product.description.html_safe if @product.description %>
-      </div>
-    </div>
-  </div>
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+            <div class="panel-heading my-panel-heading">
+               <%= @product.category.name + " - " + @product.name %>              
+            </div>
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+              <div class="row">
+                <div class="col-sm-6" style="padding-left:0px;padding-right:5px;">
+                  <div style="border:1px solid #cccccc;padding:10px 20px 10px 80px">
+                  <% if @product.attachment_files.count == 0 %>
+                  <%= image_tag "/images/picture_pdf.png", :style=>"height:200px;" %>
+                  <% else %>
+                  <%= link_to image_tag("/images/picture_pdf.png", :style=>"height:200px;"), @product.attachment_files.first.url, {"target" => "_blank"} %>
+                  <% end %>
+                  </div>
+                </div>
+                <div class="col-sm-6" style="padding-right:0px;padding-left:5px;">
+                  <div style="border:1px solid #cccccc;padding:10px 20px 10px 70px">
+                  <% if @product.youtube_url.nil? %>
+                  <%= image_tag "/images/picture_youtube.png", :style=>"height:200px;" %>
+                  <% else %>
+                  <%= link_to image_tag("/images/picture_youtube.png", :style=>"height:200px;"), @product.youtube_url, {"target" => "_blank"} %>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6" style="padding-left:0px;padding-right:5px;">
+<div style="background-color:#9b9b9b;padding:10px;color:#fff">Download Catalogue</div>
+                </div>
+                <div class="col-sm-6" style="padding-right:0px;padding-left:5px;">
+<div style="background-color:#9b9b9b;padding:10px;color:#fff">How It Works</div>
+                </div>
+              </div>
+            </div>
+<div class="" style="background:#fddb02;height:6px;margin-top:5px;"></div>
+<div class="" style="background:#fff;height:3px"></div>
+<div>
+<%= image_tag("/images/product_bg_line.jpg") %>
+</div>
+<div>
+<%= @product.description.html_safe %>
 </div>

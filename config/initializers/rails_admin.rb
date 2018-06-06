@@ -1,6 +1,8 @@
 RailsAdmin.config do |config|
   config.excluded_models << Language
   config.excluded_models << NewsType
+  config.excluded_models << Material
+  config.excluded_models << MaterialItem
   ### Popular gems integration
 
   ## == Devise ==
@@ -53,6 +55,7 @@ RailsAdmin.config do |config|
       field :name
       field :ordinal
       field :language
+      field :youtube_url
       field :short_description
       field :description, :ck_editor
       field :title do
@@ -77,6 +80,7 @@ RailsAdmin.config do |config|
       field :name
       field :ordinal
       field :language
+      field :youtube_url
       field :category
       field :slug
       field :created_at

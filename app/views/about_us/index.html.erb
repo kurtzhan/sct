@@ -1,8 +1,162 @@
-            <div class="panel-heading" style="background:#58595b; color:#fff">
-              <%= t('menus.company_and_contact') %></i>
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+            <div class="panel-heading my-panel-heading" id="company_info">
+              <%= t('company_introduction') %></i>
             </div>
             <div class="panel-body">
               <ul class="list-group">
                 <%= @about_us.html_safe if @about_us %>
               </ul>
+            </div>
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+            <div class="panel-heading my-panel-heading" id="contact_us">
+              <%= t('contact_us_h') %></i>
+            </div>
+<style>
+.flash-message {
+  margin-left:120px;
+  margin-bottom:20px;
+  padding: 5px;
+}
+.error {
+ border: solid 1px #ebccd1;
+ background-color: #f2dede;
+ color: #a94442;
+}
+.notice {
+ border: solid 1px #dff0d8;
+ background-color: #d6e9c6;
+ color: #3c763d;
+}
+.control-label{
+  text-align:left !important;
+  padding-left: 55px !important;
+}
+address{
+margin-bottom:0px !important;
+margin-left: 40px !important;
+}
+address h3{
+margin-top: 0px !important;
+margin-bottom:10px !important;
+}
+</style>
+            <div class="panel-body">
+<%= form_tag('/' + I18n.locale.to_s + '/about_us', :class => 'form-horizontal') do %>
+  <div class="form-group">
+    <label for="company" class="col-sm-2 control-label"><%= t('contact_us.company') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="company" class="form-control" placeholder="<%= t('contact_us.company') %>" name="message[company]" value="<%= @succeed == false ? params[:message][:company] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message_country" class="col-sm-2 control-label"><%= t('contact_us.country') %></label>
+    <div class="col-sm-10">
+      <%= country_select :message, :country, {selected: @succeed == false ? params[:message][:country] : nil},  { :class => "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address" class="col-sm-2 control-label"><%= t('contact_us.address') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="address" class="form-control" placeholder="<%= t('contact_us.address') %>" name="message[address]" value="<%= @succeed == false ? params[:message][:address] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zip" class="col-sm-2 control-label"><%= t('contact_us.zip_code') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="zip" class="form-control" placeholder="<%= t('contact_us.zip_code') %>" name="message[zip_code]" value="<%= @succeed == false ? params[:message][:zip_code] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="gender" class="col-sm-2 control-label"><%= t('contact_us.gender') %></label>
+    <div class="col-sm-10">
+      <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default active"><input type="radio" name="message[gender]" value="Mr." required="required" checked="checked">Mr.</label>
+      <label class="btn btn-default"><input type="radio" name="message[gender]" value="Ms.">Ms.</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label"><%= t('contact_us.name') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="name" class="form-control" placeholder="<%= t('contact_us.name') %>" name="message[name]" value="<%= @succeed == false ? params[:message][:email] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label"><%= t('contact_us.email') %></label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" placeholder="Email" name="message[email]" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<%= @succeed == false ? params[:message][:email] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email2" class="col-sm-2 control-label"><%= t('contact_us.email_2') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="email2" class="form-control" placeholder="Email 2" name="message[email_2]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<%= @succeed == false ? params[:message][:email_2] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="telephone" class="col-sm-2 control-label"><%= t('contact_us.telephone') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="telephone" class="form-control" placeholder="<%= t('contact_us.telephone') %>" name="message[telephone]" value="<%= @succeed == false ? params[:message][:telephone] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label"><%= t('contact_us.subject') %></label>
+    <div class="col-sm-10">
+      <input type="text" id="subject" class="form-control" placeholder="<%= t('contact_us.subject') %>" name="message[subject]" required="required" value="<%= @succeed == false ? params[:message][:subject] : '' %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message" class="col-sm-2 control-label"><%= t('contact_us.message') %></label>
+    <div class="col-sm-10">
+<textarea id="message" placeholder="<%= t('contact_us.message') %>" rows="3" class="form-control" name="message[body]" required="required"><%= @succeed == false ? params[:message][:body] : '' %></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><%= t('contact_us.verification') %></label>
+    <div class="col-sm-10">
+    <%= show_simple_captcha %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Send to SCT., Ltd.</button>
+    </div>
+  </div>
+<script>
+$(".simple_captcha a").bind("click", function(){
+  var url = $(this).attr("href");
+  $.ajax({url: url}).done(function(data){
+    eval(data);
+  });
+  return false;
+});
+</script>
+  <% if @flash_message %>
+  <div class="flash-message <%= @succeed ? "notice" : "error" %>">
+    <div class="container container_12 clearfix">
+      <%= @flash_message %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+            </div>
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+            <div class="panel-heading my-panel-heading">
+              <%= t('contact_details') %></i>
+            </div>
+            <div class="panel-body">
+<div class="row">
+<div class="col-sm-5"></div>
+<div class="col-sm-7">
+<h3>Special Cutting Tools CO., LTD. (SCT)</h3>
+<div>Contact: SCT sales team</div>
+<div>Office: No.49 Huaishu Street, Chengdu 610031, P.R.China</div>
+<div>Factory: Dayun Town, Jiashan City, Zhejiang Province, P.R.China</div>
+<div>Telephone: 0086 28 8625 0130</div>
+<div>Emai: sales@special-cutting.com</div>
+</div>
+</div>
             </div>

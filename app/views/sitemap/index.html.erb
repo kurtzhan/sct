@@ -1,35 +1,40 @@
-<div class="container">
-  <div class="row" style="padding: 10px;padding-left:15px;">
-      <div class="panel panel-default">
-         <div class="panel-heading" style="background: #cd665f; color: #fff; font-size:14px;">Sitemap</div>
-         <div class="panel-body" style="background: #eeeeee;">
-           <div class="list-group list-group-root">
-             <%= link_to "Home", root_path, :class => "list-group-item" %>
-             <div class="list-group">
-               <%= link_to "Products", products_path, :class => "list-group-item" %>
-               <div class="list-group">
-                 <% Category.all.each do |c| %>
-                   <%= link_to c.name, category_path(c), :class => "list-group-item" %>
-                 <% end %>
-               </div>
-               <%= link_to "Bronze Alloys", materials_path, :class => "list-group-item" %>
-               <div class="list-group">
-                 <% Material.all.each do |m| %>
-                 <div class="list-group-item">
-                   <%= (m.name + ":&nbsp;").html_safe %>
-                   <% m.material_items.each do |mi| %>
-                     <%= link_to mi.name, material_material_item_path(m, mi) %>
-                   <% end %>
-                 </div>
-                 <% end %>
-               </div>
-               <%= link_to "About Us", about_us_path, :class => "list-group-item" %>
-               <%= link_to "News", news_index_path, :class => "list-group-item" %>
-               <%= link_to "Q & C", qc_path, :class => "list-group-item" %>
-               <%= link_to "Contact", contact_path, :class => "list-group-item" %>
-             </div>
-           </div>
-         </div>
-      </div>
+<div class="" style="background:#fddb02;height:6px"></div>
+<div class="" style="background:#fff;height:3px"></div>
+<div class="panel panel-default"  style="border-radius: 0px;background:#feffff;margin-bottom:0px;">
+  <div class="panel-heading my-panel-heading"  style="background-color:#58595b;color:#fff;">
+    <%= t('menus.site_maps') %></i>
+  </div>
+  <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+<div class="just-padding" style="">
+<div class="list-group list-group-root well">
+<%= link_to t('menus.product_and_catalogue'), categories_path, {:class => "list-group-item sitemap_item"} %>
+<% Category.where(:language_id => @language_id).order("ordinal").includes(:products).each do |c| %>
+  <div class="list-group">
+    <%= link_to c.name, categories_path + "#" + c.slug, {:class => "list-group-item sitemap_item"} %>
+    <div class="list-group">
+      <% c.products.each do |p| %>
+      <%= link_to p.name, product_path(p), {:class=>"list-group-item sitemap_item"} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= link_to t('menus.company_and_contact'), about_us_path, {:class => "list-group-item sitemap_item"} %>
+  <div class="list-group">
+    <%= link_to t('company_introduction'), about_us_path + "#company_info", {:class => "list-group-item sitemap_item"} %>
+    <%= link_to t('contact_us_h'), about_us_path + "#contact_us", {:class => "list-group-item sitemap_item"} %>
+  </div>
+<%= link_to t('menus.news_and_exhibitions'), news_index_path, {:class => "list-group-item sitemap_item"} %>
+  <div class="list-group">
+    <%= link_to t('news'), news_index_path(:type=>1), {:class => "list-group-item sitemap_item"} %>
+    <%= link_to t('exhibitions'), news_index_path(:type=>2), {:class => "list-group-item sitemap_item"} %>
+  </div>
+</div>
+<style>
+.well{border:0}
+.list-group-item{border:0;background-color:#f2f2f2;}
+.sitemap_item{background-color:#fff}
+.panel-body .just-padding .sitemap_item:hover{background-color:#fff}
+</style>
+</div>
   </div>
 </div>
