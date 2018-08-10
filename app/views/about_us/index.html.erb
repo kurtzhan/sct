@@ -149,14 +149,21 @@ $(".simple_captcha a").bind("click", function(){
             </div>
             <div class="panel-body">
 <div class="row">
-<div class="col-sm-5"></div>
+<div class="col-sm-5">
+  <div id="map" style="height:300px;width:300px;"></div>
+</div>
 <div class="col-sm-7">
-<h3>Special Cutting Tools CO., LTD. (SCT)</h3>
-<div>Contact: SCT sales team</div>
-<div>Office: No.49 Huaishu Street, Chengdu 610031, P.R.China</div>
-<div>Factory: Dayun Town, Jiashan City, Zhejiang Province, P.R.China</div>
-<div>Telephone: 0086 28 8625 0130</div>
-<div>Emai: sales@special-cutting.com</div>
+  <%= @site_config.contact_us.html_safe if @site_config.contact_us %>
 </div>
 </div>
             </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 30.67, lng: 104.06},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="http://maps.google.cn/maps/api/js?key=AIzaSyAw1o73P2gb5vmuHkFlqZBvEUfQJ-omdS0&callback=initMap" async defer></script>
